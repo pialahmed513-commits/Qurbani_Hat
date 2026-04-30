@@ -11,7 +11,7 @@ const Navbar = ({ user, handleLogout }) => {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'All Animals', href: '/animals' },
+    { name: 'All Animals', href: '/all-animals' },
   ];
 
   const activeClass = "text-yellow-500 font-bold";
