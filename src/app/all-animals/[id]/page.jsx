@@ -61,7 +61,7 @@ const AnimalDetailsPage = ({ params }) => {
                             </div>
                             <div className="col-span-2 pt-4 border-t border-gray-50">
                                 <p className="text-sm text-gray-400 font-bold uppercase">Price</p>
-                                <p className="text-3xl font-bold text-yellow-600">৳ {animal.price?.toLocaleString()}</p>
+                                <p className="text-3xl font-bold text-yellow-600">$ {animal.price?.toLocaleString()}</p>
                             </div>
                         </div>
                     </div>

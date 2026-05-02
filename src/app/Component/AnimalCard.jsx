@@ -1,4 +1,6 @@
-
+import { MdEditLocationAlt } from "react-icons/md";
+import { FaWeightScale } from "react-icons/fa6";
+import { MdCake } from "react-icons/md";
 import Link from 'next/link';
 import React from 'react';
 
@@ -24,13 +26,13 @@ const AnimalCard = ({ animal }) => {
                 
                 <div className="grid grid-cols-2 gap-y-3 gap-x-2 mb-6">
                     <div className="flex items-center gap-2 text-[11px] text-gray-600 bg-gray-50 p-2 rounded-lg font-medium">
-                        <span className="opacity-70">📍</span> {animal.location}
+                        <span className="opacity-70"><MdEditLocationAlt /></span> {animal.location}
                     </div>
                     <div className="flex items-center gap-2 text-[11px] text-gray-600 bg-gray-50 p-2 rounded-lg font-medium">
-                        <span className="opacity-70">⚖️</span> {animal.weight}kg
+                        <span className="opacity-70"><FaWeightScale /></span> {animal.weight}kg
                     </div>
                     <div className="flex items-center gap-2 text-[11px] text-gray-600 bg-gray-50 p-2 rounded-lg font-medium">
-                        <span className="opacity-70">🎂</span> {animal.age}yr
+                        <span className="opacity-70"><MdCake /></span> {animal.age}yr
                     </div>
                 </div>
 
