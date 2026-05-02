@@ -35,7 +35,14 @@ const { data :res ,error} = await authClient.signUp.email({
     }; 
 
 
+  const signIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  }
   
+
+
 
     return (
         <div className="min-h-screen bg-[#fdfcf0] flex items-center justify-center px-6 py-10">
@@ -114,7 +121,7 @@ const { data :res ,error} = await authClient.signUp.email({
                     <div className="flex-1 h-[1px] bg-gray-100"></div>
                 </div>
 
-                <button 
+                <button onClick={signIn}
                     type="button"
                     className="w-full flex items-center justify-center gap-3 py-3.5 border border-gray-200 rounded-2xl hover:bg-gray-50 transition-all font-bold text-gray-700 text-sm"
                 >

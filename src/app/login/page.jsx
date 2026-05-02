@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -9,19 +8,41 @@ import { useForm } from 'react-hook-form';
 import { authClient } from '../lib/auth-client';
 
 const LoginPage = () => {
-    const{ register, handleSubmit} = useForm();
-const handleaLogin = async(data)=>{
-    console.log(data,"data");
-     
-    const { data:res, error } = await authClient.signIn.email({
-    email: data.email, // required
-    password: data.password, // required
-    rememberMe: true,
-    callbackURL: "/",
-});
+    const { register, handleSubmit } = useForm();
 
-console.log(res,error);
-}
+    const handleaLogin = async (data) => {
+        console.log(data, "data");
+         
+        const { data: res, error } = await authClient.signIn.email({
+            email: data.email, // required
+            password: data.password, // required
+            rememberMe: true,
+            callbackURL: "/",
+        });
+
+       
+        if (error) {
+            alert(error.message || "wrong mail!");
+            console.log("Login error:", error);
+            return;
+        }
+
+      
+        if (res) {
+            alert("Login Success!");
+        }
+    };
+
+    const signIn = async () => {
+        const { data: res, error } = await authClient.signIn.social({
+            provider: "google",
+            callbackURL: "/",
+        });
+
+        if (error) {
+            alert("Google Faild!");
+        }
+    };
 
     return (
         <div className="min-h-screen bg-[#fdfcf0] flex items-center justify-center px-6 mb-10 mt-10">
@@ -39,7 +60,7 @@ console.log(res,error);
                     <div className="space-y-1">
                         <label className="text-sm font-bold text-[#1a2e1a] ml-1">Email Address</label>
                         <input 
-                           {...register("email")}
+                            {...register("email")}
                             type="email" 
                             required
                             placeholder="email@example.com" 
@@ -73,7 +94,7 @@ console.log(res,error);
                     <div className="flex-1 h-[1px] bg-gray-100"></div>
                 </div>
 
-                <button className="w-full flex items-center justify-center gap-3 py-3.5 border border-gray-200 rounded-2xl hover:bg-gray-50 transition-all font-bold text-gray-700">
+                <button onClick={signIn} className="w-full flex items-center justify-center gap-3 py-3.5 border border-gray-200 rounded-2xl hover:bg-gray-50 transition-all font-bold text-gray-700">
                     <FcGoogle className="text-xl" />
                     Continue with Google
                 </button>

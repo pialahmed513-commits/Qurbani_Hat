@@ -1,13 +1,28 @@
 "use client";
-
+import { FaUserCircle } from "react-icons/fa";
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, LogOut } from "lucide-react";
 
-const Navbar = ({ user, handleLogout }) => {
+import { authClient } from '../lib/auth-client'; 
+
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+
+  const handleLogout = async () => {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          window.location.href = "/login"; 
+        },
+      },
+    });
+  };
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -46,6 +61,15 @@ const Navbar = ({ user, handleLogout }) => {
                 {link.name}
               </Link>
             ))}
+            {/* My Profile link added for logged in users */}
+            {user && (
+              <Link 
+                href="/profile" 
+                className={pathname === '/profile' ? activeClass : inactiveClass}
+              >
+                My Profile
+              </Link>
+            )}
           </div>
 
           <div className="h-6 w-[1px] bg-white/10 mx-2"></div>
@@ -54,13 +78,15 @@ const Navbar = ({ user, handleLogout }) => {
             <div className="flex items-center gap-4">
               <div className="flex flex-col items-end">
                 <span className="text-xs text-gray-400">Welcome,</span>
-                <span className="text-sm font-semibold text-white">{user?.displayName || 'User'}</span>
+                <span className="text-sm font-semibold text-white">{user?.name || 'User'}</span>
               </div>
-              <img 
-                src={user?.photoURL || 'https://via.placeholder.com/40'} 
-                alt="Profile" 
-                className="w-10 h-10 rounded-full border-2 border-yellow-500 p-0.5 object-cover" 
-              />
+              <Link href="/profile">
+                <img 
+                  src={user?.image || 'https://via.placeholder.com/40'} 
+                  alt="Profile" 
+                  className="w-10 h-10 rounded-full border-2 border-yellow-500 p-0.5 object-cover" 
+                />
+              </Link>
               <button 
                 onClick={handleLogout} 
                 className="bg-red-600/10 text-red-500 border border-red-600/20 px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-red-600 hover:text-white transition-all duration-300 text-sm font-bold"
@@ -95,7 +121,7 @@ const Navbar = ({ user, handleLogout }) => {
         </button>
       </div>
 
-      {/* Mobile Sidebar/Menu */}
+      {/* Mobile Sidebar */}
       <div className={`md:hidden absolute top-full left-0 w-full bg-[#142414] border-t border-white/5 transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4'}`}>
         <div className="flex flex-col items-center gap-6 py-8 px-6 text-center">
           {navLinks.map((link) => (
@@ -108,37 +134,41 @@ const Navbar = ({ user, handleLogout }) => {
               {link.name}
             </Link>
           ))}
+
+          {user && (
+            <Link 
+              href="/profile" 
+              onClick={() => setIsOpen(false)}
+              className={`text-lg ${pathname === '/profile' ? activeClass : inactiveClass}`}
+            >
+              My Profile
+            </Link>
+          )}
           
           <div className="w-full h-[1px] bg-white/5"></div>
 
           {user ? (
-             <div className="flex flex-col items-center gap-4">
-                <img 
-                  src={user?.photoURL} 
-                  alt="Profile" 
-                  className="w-16 h-16 rounded-full border-2 border-yellow-500 p-1" 
-                />
+              <div className="flex flex-col items-center gap-4">
+                <Link href="/profile" onClick={() => setIsOpen(false)}>
+                  <img 
+                    src={user?.image} 
+                    alt="Profile" 
+                    className="w-16 h-16 rounded-full border-2 border-yellow-500 p-1" 
+                  />
+                </Link>
                 <button 
                   onClick={() => { handleLogout(); setIsOpen(false); }} 
                   className="bg-red-600 text-white px-8 py-3 rounded-xl flex items-center gap-2 font-bold w-full justify-center"
                 >
                   <LogOut size={18} /> Logout
                 </button>
-             </div>
+              </div>
           ) : (
             <div className="flex flex-col gap-4 w-full max-w-xs">
-              <Link 
-                href="/login" 
-                onClick={() => setIsOpen(false)} 
-                className="text-center border border-yellow-500/30 text-yellow-500 py-3 rounded-xl font-bold hover:bg-yellow-500/10 transition-colors"
-              >
+              <Link href="/login" onClick={() => setIsOpen(false)} className="text-center border border-yellow-500/30 text-yellow-500 py-3 rounded-xl font-bold">
                 Login
               </Link>
-              <Link 
-                href="/register" 
-                onClick={() => setIsOpen(false)} 
-                className="text-center bg-yellow-600 text-[#1a2e1a] py-3 rounded-xl font-bold shadow-lg"
-              >
+              <Link href="/register" onClick={() => setIsOpen(false)} className="text-center bg-yellow-600 text-[#1a2e1a] py-3 rounded-xl font-bold">
                 Register
               </Link>
             </div>
