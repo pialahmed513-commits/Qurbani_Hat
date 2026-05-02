@@ -22,7 +22,7 @@
     "age": 2,
     "location": "Kushtia",
     "description": "Premium quality Black Bengal goat, famous for meat quality. Very active and healthy.",
-    "image": "https://i.ibb.co.com/XyY9Z3G/goat1.jpg",
+    "image": "https://res.cloudinary.com/dl7iup6xk/image/upload/v1777741348/goat-lake-outdoor-39334498_jimnjx.webp",
     "category": "Small Animal"
   },
   {
@@ -34,8 +34,7 @@
     "weight": 520,
     "age": 4,
     "location": "Mymensingh",
-    "description": "Massive Nili-Ravi buffalo. Known for high meat density and healthy structure.",
-    "image": "https://i.ibb.co.com/6Xz9ZfP/buffalo1.jpg",
+    "description": "https://res.cloudinary.com/dl7iup6xk/image/upload/v1777741536/images_ymehik.jpg",
     "category": "Extra Large"
   },
   {
@@ -48,7 +47,7 @@
     "age": 2,
     "location": "Sylhet",
     "description": "Beautiful Merino sheep with thick wool. Very healthy and well-groomed for Qurbani.",
-    "image": "https://i.ibb.co.com/vH9vYvF/sheep1.jpg",
+    "image": "https://res.cloudinary.com/dl7iup6xk/image/upload/v1777741597/images_1_w0xaxp.jpg",
     "category": "Small Animal"
   },
   {
@@ -61,7 +60,7 @@
     "age": 4,
     "location": "Sirajganj",
     "description": "Giant sized Australian hybrid cow. Perfect for a grand Qurbani.",
-    "image": "https://i.ibb.co.com/mRz4Pq1/cow2.jpg",
+    "image": "https://res.cloudinary.com/dl7iup6xk/image/upload/v1777741646/images_2_l0fnxj.jpg",
     "category": "Large Animal"
   },
   {
@@ -74,7 +73,7 @@
     "age": 5,
     "location": "Bhola",
     "description": "Black Murrah buffalo, the king of buffaloes. Huge weight and premium quality meat.",
-    "image": "https://i.ibb.co.com/kMh6ZfP/buffalo2.jpg",
+    "image": "https://res.cloudinary.com/dl7iup6xk/image/upload/v1777741694/Pure-Murrah-Buffalo_xrlv3p.jpg",
     "category": "Extra Large"
   },
   {
@@ -87,7 +86,7 @@
     "age": 2,
     "location": "Satkhira",
     "description": "Deshi Garole sheep. Small size but very tasty meat and fully organic.",
-    "image": "https://i.ibb.co.com/m5V0XfD/sheep2.jpg",
+    "image": "https://res.cloudinary.com/dl7iup6xk/image/upload/v1777741742/images_3_igpfg3.jpg",
     "category": "Small Animal"
   },
   {
@@ -100,7 +99,7 @@
     "age": 3,
     "location": "Rajshahi",
     "description": "Beautiful long-eared Jamunapari goat. Well-built structure.",
-    "image": "https://i.ibb.co.com/vH9vYvF/goat2.jpg",
+    "image": "https://res.cloudinary.com/dl7iup6xk/image/upload/v1777741785/5251idea99Jamunapari-male-Goat_czwlo1.jpg",
     "category": "Small Animal"
   },
   {
@@ -113,7 +112,7 @@
     "age": 3,
     "location": "Pabna",
     "description": "Attractive Red Sindhi bull with a strong hump. Fully organic feeding.",
-    "image": "https://i.ibb.co.com/Kxz9G2K/cow3.jpg",
+    "image": "https://res.cloudinary.com/dl7iup6xk/image/upload/v1777741824/images_4_igncna.jpg",
     "category": "Large Animal"
   },
   {
@@ -126,7 +125,7 @@
     "age": 3,
     "location": "Dhaka",
     "description": "Premium Turkish breed Dumba. Heavy weight and very prestigious for Qurbani.",
-    "image": "https://i.ibb.co.com/yF0XfD1/sheep3.jpg",
+    "image": "https://res.cloudinary.com/dl7iup6xk/image/upload/v1777741870/images_5_x4bxdw.jpg",
     "category": "Medium Animal"
   },
   {
@@ -139,7 +138,7 @@
     "age": 4,
     "location": "Sylhet",
     "description": "Huge Holstein Friesian bull. Ready for immediate delivery.",
-    "image": "https://i.ibb.co.com/G7f0XfD/cow6.jpg",
+    "image": "https://res.cloudinary.com/dl7iup6xk/image/upload/v1777741919/holstein-friesian-cows-358_qqiwyu.jpg",
     "category": "Large Animal"
   },
   {
@@ -152,7 +151,7 @@
     "age": 3,
     "location": "Jessore",
     "description": "Strong Sirohi breed goat. High immunity and healthy posture.",
-    "image": "https://i.ibb.co.com/yF0XfD1/goat6.jpg",
+    "image": "https://res.cloudinary.com/dl7iup6xk/image/upload/v1777741964/sirohi-goat-farm-1_klgeeq.jpg",
     "category": "Small Animal"
   }
 ]
