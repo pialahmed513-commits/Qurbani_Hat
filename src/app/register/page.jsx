@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import { LuMoon } from 'react-icons/lu';
 import { useForm } from 'react-hook-form';
-import { authClient } from '../lib/auth-client';
+import { authClient } from '@/lib/auth-client';
 import { error } from 'better-auth/api';
 
 const RegisterPage = () => {

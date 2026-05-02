@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, LogOut } from "lucide-react";
 
-import { authClient } from '../lib/auth-client'; 
+import { authClient } from '@/lib/auth-client'; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
