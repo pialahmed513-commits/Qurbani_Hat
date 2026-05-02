@@ -6,59 +6,55 @@ import { FcGoogle } from 'react-icons/fc';
 import { LuMoon } from 'react-icons/lu';
 import { useForm } from 'react-hook-form';
 import { authClient } from '@/lib/auth-client';
-import { error } from 'better-auth/api';
+import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
     const { register, handleSubmit } = useForm();
 
     const handleRegister = async (data) => {
-        console.log(data,"data");
-    const {email,password,photo,name} = data  ;
-    console.log(email,photo,name,password);
+        const { email, password, photo, name } = data;
 
-const { data :res ,error} = await authClient.signUp.email({
-    name: name, // required
-    email: email, // required
-    password: password, // required
-    image: photo,
-    callbackURL: "/",
-});
-      console.log(res,error); 
-      
-      if (error) {
-        alert(error.message);
+        const { data: res, error } = await authClient.signUp.email({
+            name: name,
+            email: email,
+            password: password,
+            image: photo,
+            callbackURL: "/",
+        });
 
-      }
-      if (res) {
-            alert("Register successfull")
+        if (error) {
+            toast.error(error.message || "Registration failed!");
+            return;
         }
-    }; 
 
+        if (res) {
+            toast.success("Register successful");
+        }
+    };
 
-  const signIn = async () => {
-    const data = await authClient.signIn.social({
-      provider: "google",
-    });
-  }
-  
+    const signIn = async () => {
+        const { data: res, error } = await authClient.signIn.social({
+            provider: "google",
+            callbackURL: "/",
+        });
 
-
+        if (error) {
+            toast.error("Google Sign up failed!");
+        }
+    };
 
     return (
         <div className="min-h-screen bg-[#fdfcf0] flex items-center justify-center px-6 py-10">
             <div className="max-w-md w-full bg-white rounded-[40px] p-10 shadow-sm border border-gray-100 flex flex-col items-center">
                 
-                {/* Title and Logo */}
                 <div className="flex items-center gap-2 mb-2">
                     <LuMoon className="text-3xl text-yellow-500 fill-yellow-500" />
                     <h1 className="text-3xl font-bold text-[#1a2e1a] font-serif">QurbaniHat</h1>
                 </div>
                 <p className="text-gray-500 text-sm mb-8">Create your account</p>
 
-                {/* Registration Form */}
                 <form className="w-full space-y-4" onSubmit={handleSubmit(handleRegister)}>
                     
-                    {/* Name Field */}
                     <div className="space-y-1">
                         <label className="text-sm font-bold text-[#1a2e1a] ml-1">Full Name</label>
                         <input 
@@ -70,7 +66,6 @@ const { data :res ,error} = await authClient.signUp.email({
                         />
                     </div>
 
-                    {/* Email Field */}
                     <div className="space-y-1">
                         <label className="text-sm font-bold text-[#1a2e1a] ml-1">Email Address</label>
                         <input 
@@ -82,7 +77,6 @@ const { data :res ,error} = await authClient.signUp.email({
                         />
                     </div>
 
-                    {/* Photo URL Field */}
                     <div className="space-y-1">
                         <label className="text-sm font-bold text-[#1a2e1a] ml-1">Photo URL</label>
                         <input 
@@ -94,7 +88,6 @@ const { data :res ,error} = await authClient.signUp.email({
                         />
                     </div>
 
-                    {/* Password Field */}
                     <div className="space-y-1">
                         <label className="text-sm font-bold text-[#1a2e1a] ml-1">Password</label>
                         <input 
@@ -114,7 +107,6 @@ const { data :res ,error} = await authClient.signUp.email({
                     </button>
                 </form>
 
-                {/* Social Login */}
                 <div className="w-full flex items-center gap-4 my-6">
                     <div className="flex-1 h-[1px] bg-gray-100"></div>
                     <span className="text-gray-400 text-xs uppercase font-medium">or</span>
@@ -129,7 +121,6 @@ const { data :res ,error} = await authClient.signUp.email({
                     Sign up with Google
                 </button>
 
-                {/* Login Link */}
                 <p className="mt-8 text-sm text-gray-500">
                     Already have an account? 
                     <Link href="/login" className="text-green-700 font-bold hover:underline ml-1">

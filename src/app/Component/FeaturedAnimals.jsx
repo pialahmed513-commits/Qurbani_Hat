@@ -1,6 +1,6 @@
 import React from 'react';
 import AnimalCard from './AnimalCard';
-
+export const dynamic = 'force-dynamic'
 const FeaturedAnimals = async () => {
     
     const res = await fetch('https://qurbani-hat-sepia.vercel.app/Data.json', );
