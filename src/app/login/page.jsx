@@ -57,7 +57,7 @@ const LoginPage = () => {
                             {...register("email")}
                             type="email" 
                             required
-                            placeholder="email@example.com" 
+                            placeholder="Enter Your Email" 
                             className="w-full p-4 bg-gray-50 border border-gray-100 rounded-2xl outline-none focus:border-green-500 focus:bg-white transition-all text-sm"
                         />
                     </div>
@@ -68,7 +68,7 @@ const LoginPage = () => {
                             {...register("password")}
                             type="password" 
                             required
-                            placeholder="••••••" 
+                            placeholder="Enter Your Password" 
                             className="w-full p-4 bg-gray-50 border border-gray-100 rounded-2xl outline-none focus:border-green-500 focus:bg-white transition-all text-sm"
                         />
                     </div>
@@ -107,3 +107,6 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+
+

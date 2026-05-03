@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation'; 
 import { FcGoogle } from 'react-icons/fc';
 import { LuMoon } from 'react-icons/lu';
 import { useForm } from 'react-hook-form';
@@ -10,6 +11,7 @@ import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
     const { register, handleSubmit } = useForm();
+    const router = useRouter(); 
 
     const handleRegister = async (data) => {
         const { email, password, photo, name } = data;
@@ -19,7 +21,7 @@ const RegisterPage = () => {
             email: email,
             password: password,
             image: photo,
-            callbackURL: "/",
+            callbackURL: "/", 
         });
 
         if (error) {
@@ -29,17 +31,24 @@ const RegisterPage = () => {
 
         if (res) {
             toast.success("Register successful");
+            router.push('/'); 
         }
     };
 
     const signIn = async () => {
         const { data: res, error } = await authClient.signIn.social({
             provider: "google",
-            callbackURL: "/",
+            callbackURL: "/", 
         });
 
         if (error) {
             toast.error("Google Sign up failed!");
+            return;
+        }
+        
+       
+        if (res) {
+            router.push('/');
         }
     };
 
@@ -61,7 +70,7 @@ const RegisterPage = () => {
                             {...register("name")}
                             type="text" 
                             required
-                            placeholder="John Doe" 
+                            placeholder="Enter Your Name" 
                             className="w-full p-4 bg-gray-50 border border-gray-100 rounded-2xl outline-none focus:border-green-500 focus:bg-white transition-all text-sm"
                         />
                     </div>
@@ -72,7 +81,7 @@ const RegisterPage = () => {
                             {...register("email")}
                             type="email" 
                             required
-                            placeholder="email@example.com" 
+                            placeholder="Enter Your Email" 
                             className="w-full p-4 bg-gray-50 border border-gray-100 rounded-2xl outline-none focus:border-green-500 focus:bg-white transition-all text-sm"
                         />
                     </div>
@@ -94,7 +103,7 @@ const RegisterPage = () => {
                             {...register("password")}
                             type="password" 
                             required
-                            placeholder="••••••" 
+                            placeholder="Enter Your Password" 
                             className="w-full p-4 bg-gray-50 border border-gray-100 rounded-2xl outline-none focus:border-green-500 focus:bg-white transition-all text-sm"
                         />
                     </div>
