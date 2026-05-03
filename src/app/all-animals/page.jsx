@@ -1,5 +1,6 @@
 import React from 'react';
 import AnimalCard from '../Component/AnimalCard';
+import Link from 'next/link';
 
 const Allanimals = async ({ searchParams }) => {
 
@@ -32,24 +33,24 @@ const Allanimals = async ({ searchParams }) => {
                     <div className="flex items-center gap-4">
                         <span className="text-sm font-bold text-gray-500">Sort by:</span>
                         <div className="flex bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-                            <a 
+                            <Link 
                                 href="/all-animals" 
                                 className={`px-4 py-2 text-xs font-bold transition-all ${!sort ? 'bg-[#1a2e1a] text-white' : 'text-gray-600 hover:bg-gray-50'}`}
                             >
                                 Default
-                            </a>
-                            <a 
+                            </Link>
+                            <Link 
                                 href="/all-animals?sort=low-to-high" 
                                 className={`px-4 py-2 text-xs font-bold border-l border-gray-200 transition-all ${sort === 'low-to-high' ? 'bg-[#1a2e1a] text-white' : 'text-gray-600 hover:bg-gray-50'}`}
                             >
                                 Price: Low to High
-                            </a>
-                            <a 
+                            </Link>
+                            <Link 
                                 href="/all-animals?sort=high-to-low" 
                                 className={`px-4 py-2 text-xs font-bold border-l border-gray-200 transition-all ${sort === 'high-to-low' ? 'bg-[#1a2e1a] text-white' : 'text-gray-600 hover:bg-gray-50'}`}
                             >
                                 Price: High to Low
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

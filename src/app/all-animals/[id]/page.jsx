@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { toast, Toaster } from 'react-hot-toast';
 
@@ -74,9 +75,11 @@ const AnimalDetailsPage = ({ params }) => {
                             <div className="flex items-center justify-center gap-2 text-yellow-700 font-bold mb-6 bg-yellow-50 py-2 rounded-full text-sm">
                                 🔒 You need to be logged in to book this animal
                             </div>
+                            <Link href={`/login`}>
                             <button className="w-full py-4 bg-[#1a2e1a] text-white rounded-2xl font-bold hover:bg-green-900 transition-all">
                                 Login to Book
                             </button>
+                            </Link>
                         </div>
                     ) : (
                         <form onSubmit={handleBooking} className="space-y-6">

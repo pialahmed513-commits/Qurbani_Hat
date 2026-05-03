@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning
       >
         <Navbar />
-        <main className="max-w-7xl mx-auto flex-grow w-full"> 
+        <main> 
           {children}
         </main>
         <Footer />
