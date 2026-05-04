@@ -38,6 +38,11 @@ const LoginPage = () => {
         if (error) {
             toast.error("Google Login Failed!");
         }
+
+       if (res) {
+                    toast.success("Login successful");
+                    router.push('/'); 
+        }
     };
 
     return (
