@@ -47,8 +47,9 @@ const RegisterPage = () => {
         }
         
        
-        if (res) {
-            router.push('/');
+         if (res) {
+            toast.success("Register successful");
+            router.push('/'); 
         }
     };
 
